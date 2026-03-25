@@ -768,3 +768,14 @@ function pulitzer_block_binding_callback_vinyl_count() {
 	return sprintf( '<span class="vinyl-count-number">%s</span> %s', $number, $plural );
 }
 add_shortcode( 'vinyl_count', 'pulitzer_block_binding_callback_vinyl_count' );
+
+
+/**
+ * Output dark mode detection script as early as possible in <head>
+ * to prevent flash of unstyled content (FOUC).
+ * Priority 1 ensures it runs before stylesheets are enqueued.
+ */
+function pulitzer_dark_mode_early_script() {
+	echo '<script>(function(){var s=localStorage.getItem("darkMode");var p=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(s==="enabled"||(s===null&&p)){document.documentElement.classList.add("theme-dark");}if(window.matchMedia){window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",function(e){if(localStorage.getItem("darkMode")===null){document.documentElement.classList.toggle("theme-dark",e.matches);}});}})();</script>';
+}
+add_action( 'wp_head', 'pulitzer_dark_mode_early_script', 1 );
