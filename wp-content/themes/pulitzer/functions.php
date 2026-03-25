@@ -776,6 +776,6 @@ add_shortcode( 'vinyl_count', 'pulitzer_block_binding_callback_vinyl_count' );
  * Priority 1 ensures it runs before stylesheets are enqueued.
  */
 function pulitzer_dark_mode_early_script() {
-	echo '<script>(function(){var s=localStorage.getItem("darkMode");var p=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(s==="enabled"||(s===null&&p)){document.documentElement.classList.add("theme-dark");}if(window.matchMedia){window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",function(e){if(localStorage.getItem("darkMode")===null){document.documentElement.classList.toggle("theme-dark",e.matches);}});}})();</script>';
+	echo '<script>(function(){var s=localStorage.getItem("darkMode");var p=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;if(s==="enabled"||(s===null&&p)){document.documentElement.classList.add("theme-dark");}if(window.matchMedia){var mq=window.matchMedia("(prefers-color-scheme: dark)");var handler=function(e){if(localStorage.getItem("darkMode")===null){document.documentElement.classList.toggle("theme-dark",e.matches);}};if(mq.addEventListener){mq.addEventListener("change",handler);}else if(mq.addListener){mq.addListener(handler);}}})();</script>';
 }
 add_action( 'wp_head', 'pulitzer_dark_mode_early_script', 1 );
