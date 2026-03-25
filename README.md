@@ -34,3 +34,4 @@ bash deploy.sh
 ```
 локальні зміни → git commit → git push → bash deploy.sh → serhii.blog
 ```
+
