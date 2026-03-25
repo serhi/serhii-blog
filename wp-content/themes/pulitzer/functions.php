@@ -687,6 +687,37 @@ add_shortcode( 'vinyl_genre_filter', 'pulitzer_vinyl_genre_filter_shortcode' );
 
 
 /* --------------------------------------------------------------------------
+   Category filter – shortcode [category_filter]
+   -------------------------------------------------------------------------- */
+
+function pulitzer_category_filter_shortcode() {
+	$terms = get_terms( [
+		'taxonomy'   => 'category',
+		'hide_empty' => true,
+		'orderby'    => 'name',
+	] );
+
+	if ( empty( $terms ) || is_wp_error( $terms ) ) return '';
+
+	$current    = get_queried_object();
+	$blog_url   = get_permalink( get_option( 'page_for_posts' ) ) ?: home_url( '/' );
+	$all_active = is_home() || is_front_page();
+
+	$html  = '<div class="vinyl-genre-filter">';
+	$html .= '<a href="' . esc_url( $blog_url ) . '" class="vinyl-genre-filter__tag' . ( $all_active ? ' is-active' : '' ) . '">Всі</a>';
+
+	foreach ( $terms as $term ) {
+		$is_active = ( $current instanceof WP_Term && $current->term_id === $term->term_id );
+		$html     .= '<a href="' . esc_url( get_category_link( $term->term_id ) ) . '" class="vinyl-genre-filter__tag' . ( $is_active ? ' is-active' : '' ) . '">' . esc_html( $term->name ) . '</a>';
+	}
+
+	$html .= '</div>';
+	return $html;
+}
+add_shortcode( 'category_filter', 'pulitzer_category_filter_shortcode' );
+
+
+/* --------------------------------------------------------------------------
    Discogs redirect – CPT 'vinyl'
    -------------------------------------------------------------------------- */
 
