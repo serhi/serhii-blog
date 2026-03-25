@@ -1,0 +1,23 @@
+{
+  "name": "lastfm-recent-albums",
+  "version": "1.0.0",
+  "description": "Display your recent albums from Last.fm",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "format": "wp-scripts format",
+    "lint:js": "wp-scripts lint-js"
+  },
+  "keywords": [
+    "wordpress",
+    "gutenberg",
+    "lastfm",
+    "music"
+  ],
+  "author": "Serhii",
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "@wordpress/scripts": "^27.0.0"
+  }
+}

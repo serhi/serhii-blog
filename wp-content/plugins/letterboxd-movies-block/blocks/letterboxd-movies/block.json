@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "letterboxd-movies/movies",
+	"version": "1.0.0",
+	"title": "Letterboxd Movies",
+	"category": "widgets",
+	"description": "Displays your recently watched Letterboxd movies.",
+	"keywords": [ "letterboxd", "movies", "films", "watchlist" ],
+	"textdomain": "letterboxd-movies-block",
+	"supports": {
+		"html": false
+	},
+	"style": "file:./style.css",
+	"editorScript": "file:./index.js",
+	"attributes": {
+		"columns":     { "type": "integer", "default": 4 },
+		"moviesCount": { "type": "integer", "default": 4 },
+		"showImage":   { "type": "boolean", "default": true },
+		"showTitle":   { "type": "boolean", "default": true },
+		"showRating":  { "type": "boolean", "default": false }
+	}
+}

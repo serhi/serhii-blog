@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/simple-star-rating-block",
+	"version": "0.1.0",
+	"title": "Simple Star Rating Block",
+	"category": "widgets",
+	"icon": "starHalf",
+	"description": "Star Rating Block allows you to display star ratings with manually entered value or pulled from a custom field.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"rating": {
+			"type": "number",
+			"default": 0
+		},
+		"useCustomField": {
+			"type": "boolean",
+			"default": false
+		},
+		"customField": {
+			"type": "string",
+			"default": ""
+		},
+		"starColor": {
+			"type": "string",
+			"default": "#FFC700"
+		},
+		"starSize": {
+			"type": "number",
+			"default": 20
+		}
+	},
+	"textdomain": "simple-star-rating-block",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php"
+}

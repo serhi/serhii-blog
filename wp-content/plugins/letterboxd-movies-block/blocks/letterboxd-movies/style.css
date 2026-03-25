@@ -1,0 +1,45 @@
+.lbm-grid {
+	display: grid;
+	grid-template-columns: repeat(var(--lbm-columns, 4), 1fr);
+	gap: var(--wp--preset--spacing--50, 1rem);
+}
+
+@media (max-width: 600px) {
+	.lbm-grid {
+		grid-template-columns: repeat(2, 1fr) !important;
+	}
+}
+
+.lbm-card {
+	text-decoration: none;
+	color: inherit;
+}
+
+.lbm-card img {
+	width: 100%;
+	aspect-ratio: 2/3;
+	object-fit: cover;
+	border-radius: 8px;
+	display: block;
+}
+
+.lbm-title {
+	font-size: 0.95rem;
+	margin: 0.5rem 0 0;
+	font-weight: 600;
+}
+
+.lbm-rating {
+	font-size: 0.85rem;
+	color: var(--wp--preset--color--accent, #e67e22);
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.lbm-rewatch {
+	display: inline-flex;
+	align-items: center;
+	color: var(--wp--preset--color--contrast-2);
+	opacity: 0.8;
+}

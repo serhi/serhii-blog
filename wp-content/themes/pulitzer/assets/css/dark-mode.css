@@ -1,0 +1,35 @@
+/* ==========================================================================
+   Pulitzer – Dark Mode
+   ========================================================================== */
+
+.theme-dark {
+
+	/* Base colors */
+	--wp--preset--color--base:       #1C1814;
+	--wp--preset--color--contrast:   #F2EDE3;
+
+	/* Grey scale */
+	--wp--preset--color--base-2:     #231F1B;
+	--wp--preset--color--contrast-2: #8A8078;
+	--wp--preset--color--contrast-3: #665D55;
+	--wp--preset--color--contrast-4: #3D3530;
+	--wp--preset--color--contrast-5: #2A2420;
+
+	background-color: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+}
+
+.theme-dark svg.wp-logo {
+	fill: #FFFFFF;
+	stroke: #FFFFFF;
+}
+
+/* Featured symbol – dark mode */
+.theme-dark .is-featured .wp-block-post-title a {
+	display: inline;
+}
+
+.theme-dark .is-featured .wp-block-post-title::before,
+.theme-dark .featured-symbol {
+	color: var(--wp--preset--color--accent);
+}
