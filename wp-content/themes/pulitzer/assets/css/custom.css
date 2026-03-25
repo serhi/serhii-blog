@@ -72,7 +72,7 @@ code {
 	display: inline-block;
 	padding: 12px 16px;
 	border: 1px solid var(--wp--preset--color--contrast-5);
-	border-radius: 8px;
+	border-radius: 20px;
 	color: var(--wp--preset--color--contrast);
 	background-color: transparent;
 	transition: all 0.2s ease;
