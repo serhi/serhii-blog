@@ -17,6 +17,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 65002
           script: |
-            echo "=== Home dir ===" && ls ~
-            echo "=== git-deploy ===" && ls ~/git-deploy/ 2>/dev/null || echo "NOT FOUND"
-            echo "=== public_html/themes ===" && ls ~/public_html/wp-content/themes/ 2>/dev/null || echo "NOT FOUND"
+            echo "=== git-deploy (all) ===" && ls -la ~/git-deploy/
+            echo "=== domains ===" && ls ~/domains/
+            echo "=== sync-deploy.sh ===" && cat ~/sync-deploy.sh
