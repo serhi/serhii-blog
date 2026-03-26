@@ -251,3 +251,68 @@ code {
 		grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
 	}
 }
+
+
+/* --------------------------------------------------------------------------
+   Accessibility — Skip link
+   -------------------------------------------------------------------------- */
+
+.skip-link {
+	position: absolute;
+	left: -9999px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.skip-link:focus {
+	position: fixed;
+	left: 1rem;
+	top: 1rem;
+	width: auto;
+	height: auto;
+	overflow: visible;
+	z-index: 9999;
+	padding: 0.5em 1em;
+	background: var(--wp--preset--color--base);
+	color: var(--wp--preset--color--contrast);
+	border-radius: 4px;
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: 2px;
+	font-weight: 500;
+	text-decoration: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   Accessibility — Focus visible styles
+   WCAG 2.2 · 2.4.7 Focus Visible · 2.4.11 Focus Appearance
+   -------------------------------------------------------------------------- */
+
+/* 1. Show outline on ALL links for keyboard navigation.
+      Using :focus (not :focus-visible) as the base so Safari also works
+      when the user enables "Keyboard navigation" in macOS/Safari settings. */
+a:focus {
+	outline: 2px solid var(--wp--preset--color--accent);
+	outline-offset: 2px;
+}
+
+/* 2. Hide outline for mouse/pointer users in browsers that support
+      :focus-visible (Chrome, Firefox, Safari 15.4+).
+      Older browsers without :focus-visible support keep the outline above. */
+a:focus:not(:focus-visible) {
+	outline: none;
+}
+
+/* 3. Dark mode toggle — the <input> is visually hidden (clip-path),
+      so the focus ring must appear on the sibling .track element instead.
+      Override the Tabor plugin's -webkit-focus-ring-color with our accent. */
+.wp-block-tabor-dark-mode-toggle__input:focus + .wp-block-tabor-dark-mode-toggle__track {
+	outline: 2px solid var(--wp--preset--color--accent) !important;
+	outline-offset: 3px;
+}
+
+.wp-block-tabor-dark-mode-toggle__input:focus:not(:focus-visible) + .wp-block-tabor-dark-mode-toggle__track {
+	outline: none !important;
+}
