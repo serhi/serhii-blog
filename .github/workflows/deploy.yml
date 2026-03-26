@@ -16,7 +16,4 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 65002
-          script: |
-            echo "=== git-deploy (all) ===" && ls -la ~/git-deploy/
-            echo "=== domains ===" && ls ~/domains/
-            echo "=== sync-deploy.sh ===" && cat ~/sync-deploy.sh
+          script: bash ~/sync-deploy.sh
