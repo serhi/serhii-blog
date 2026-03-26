@@ -121,9 +121,16 @@ function lbm_render_callback( $attributes ) {
 		<?php foreach ( $movies as $movie ) : ?>
 			<a href="<?php echo esc_url( $movie['link'] ); ?>" target="_blank" rel="noopener noreferrer" class="lbm-card">
 				<?php if ( $show_image && ! empty( $movie['image'] ) ) : ?>
-					<img src="<?php echo esc_url( $movie['image'] ); ?>"
-					     alt="<?php echo esc_attr( $movie['title'] ); ?>"
-					     loading="lazy">
+					<div class="lbm-image-wrap">
+						<img src="<?php echo esc_url( $movie['image'] ); ?>"
+						     alt="<?php echo esc_attr( $movie['title'] ); ?>"
+						     loading="lazy">
+						<img src="<?php echo esc_url( $movie['image'] ); ?>"
+						     alt=""
+						     aria-hidden="true"
+						     loading="lazy"
+						     class="lbm-image-blur">
+					</div>
 				<?php endif; ?>
 				<?php if ( $show_title ) : ?>
 					<p class="lbm-title"><?php echo esc_html( $movie['title'] ); ?></p>
