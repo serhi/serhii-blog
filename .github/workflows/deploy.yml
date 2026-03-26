@@ -15,6 +15,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 65002
           script: |
             rsync -a --delete ~/git-deploy/wp-content/themes/pulitzer/ \
               ~/public_html/wp-content/themes/pulitzer/
