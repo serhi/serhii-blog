@@ -4,7 +4,7 @@
 			"name": "page-no-title",
 			"postTypes": [ "page" ],
 			"title": "Page No Title"
-		},
+		}
 	],
 	"settings": {
 		"appearanceTools": true,
