@@ -512,9 +512,9 @@ function pulitzer_custom_assets() {
             true
         );
     }
+
 }
 add_action( 'wp_enqueue_scripts', 'pulitzer_custom_assets' );
-
 
 /* --------------------------------------------------------------------------
    SVG uploads
