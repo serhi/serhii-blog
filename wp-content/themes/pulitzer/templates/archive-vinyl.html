@@ -1,0 +1,37 @@
+<!-- wp:template-part {"slug":"header","theme":"pulitzer","tagName":"header","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|90","bottom":"var:preset|spacing|90"},"blockGap":"var:preset|spacing|100"}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--90);padding-bottom:var(--wp--preset--spacing--90)"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|40","margin":{"bottom":"0"}},"border":{"radius":"0px","width":"0px","style":"none"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="border-style:none;border-width:0px;border-radius:0px;margin-bottom:0"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">[vinyl_count] в колекції</h1>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Музику, яку я зібрав протягом років. Я намагаюсь купувати тільки ті альбоми які я буду слухати over and over.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>[vinyl_genre_filter]</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide"><!-- wp:query {"queryId":1,"query":{"perPage":100,"pages":"0","offset":0,"postType":"vinyl","order":"asc","orderBy":"title","author":"","search":"","sticky":"","inherit":false,"parents":[],"format":[]},"align":"wide","layout":{"type":"default"}} -->
+<div class="wp-block-query alignwide"><!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|50"}},"layout":{"type":"grid","columnCount":4,"minimumColumnWidth":null}} -->
+<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30","margin":{"bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="margin-bottom:var(--wp--preset--spacing--60)"><!-- wp:post-featured-image {"isLink":true,"aspectRatio":"1"} /-->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|10"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
+<div class="wp-block-group"><!-- wp:post-title {"isLink":true,"fontSize":"small"} /-->
+
+<!-- wp:group {"style":{"elements":{"link":{"color":{"text":"var:preset|color|contrast-2"}}},"spacing":{"blockGap":"var:preset|spacing|20"}},"textColor":"contrast-2","fontSize":"small","fontFamily":"system-sans-serif","layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group has-contrast-2-color has-text-color has-link-color has-system-sans-serif-font-family has-small-font-size"><!-- wp:acf-field-blocks/acf-text {"fieldKey":"field_69269adc21ce6","fieldSource":"current_post"} /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+<!-- /wp:post-template --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"pulitzer","tagName":"footer","area":"footer"} /-->

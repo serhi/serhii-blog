@@ -1,10 +1,37 @@
-<!-- wp:template-part {"slug":"header","tagName":"header","area":"header"} /-->
+<!-- wp:template-part {"slug":"header","theme":"pulitzer","tagName":"header","area":"header"} /-->
 
 <!-- wp:group {"tagName":"main","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|100","bottom":"var:preset|spacing|100"},"blockGap":"var:preset|spacing|100"}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--100);padding-bottom:var(--wp--preset--spacing--100)">
-	<!-- wp:pattern {"slug":"pulitzer/hidden-search"} /-->
-	<!-- wp:template-part {"slug":"posts"} /-->
-</main>
+<main class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--100);padding-bottom:var(--wp--preset--spacing--100)"><!-- wp:search {"label":"Search","showLabel":false,"placeholder":"Шукати...","buttonText":"Search","buttonPosition":"button-inside","buttonUseIcon":true} /-->
+
+<!-- wp:group {"metadata":{"categories":["pulitzer"],"patternName":"pulitzer/general-archive-list","name":"Archive list"},"className":"has-system-sans-serif-font-family has-small-font-size","style":{"spacing":{"blockGap":"var:preset|spacing|20","margin":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-system-sans-serif-font-family has-small-font-size" style="margin-top:var(--wp--preset--spacing--80);margin-bottom:var(--wp--preset--spacing--80)"><!-- wp:query {"queryId":0,"query":{"perPage":9,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true}} -->
+<div class="wp-block-query"><!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}}} -->
+<!-- wp:columns {"verticalAlignment":"top","isStackedOnMobile":false,"style":{"spacing":{"blockGap":{"top":"var:preset|spacing|10","left":"var:preset|spacing|50"},"padding":{"top":"var:preset|spacing|20"},"margin":{"top":"0","bottom":"0"}},"border":{"top":{"color":"var:preset|color|contrast-5","width":"1px"}}}} -->
+<div class="wp-block-columns are-vertically-aligned-top is-not-stacked-on-mobile" style="border-top-color:var(--wp--preset--color--contrast-5);border-top-width:1px;margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--20)"><!-- wp:column {"verticalAlignment":"top","width":"","style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-column is-vertically-aligned-top"><!-- wp:post-title {"isLink":true,"fontSize":"small"} /--></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"verticalAlignment":"top","width":"30%","style":{"spacing":{"blockGap":"0"}}} -->
+<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:30%"><!-- wp:post-date {"textAlign":"right"} /--></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"metadata":{"patternName":"pulitzer/hidden-no-results","name":"No results"}} -->
+<p>Нічого не вдалось знайти</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+
+<!-- wp:query-pagination {"paginationArrow":"arrow","textColor":"primary","layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous {"label":"\u003c?php esc_html_e( 'Previous', 'pulitzer' ); ?\u003e"} /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next {"label":"\u003c?php esc_html_e( 'Next', 'pulitzer' ); ?\u003e"} /-->
+<!-- /wp:query-pagination --></div>
+<!-- /wp:query --></div>
+<!-- /wp:group --></main>
 <!-- /wp:group -->
 
-<!-- wp:template-part {"slug":"footer","tagName":"footer","area":"footer"} /-->
+<!-- wp:template-part {"slug":"footer","theme":"pulitzer","tagName":"footer","area":"footer"} /-->

@@ -2,10 +2,18 @@
 	"customTemplates": [
 		{
 			"name": "page-no-title",
-			"postTypes": [
-				"page"
-			],
+			"postTypes": [ "page" ],
 			"title": "Page No Title"
+		},
+		{
+			"name": "slide",
+			"postTypes": [ "page", "post" ],
+			"title": "Slide"
+		},
+		{
+			"name": "test-page",
+			"postTypes": [ "page" ],
+			"title": "Test page"
 		}
 	],
 	"settings": {
