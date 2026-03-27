@@ -1,0 +1,103 @@
+/* admin.css — Garmin Fitness Widgets admin settings page */
+
+.gfw-admin-wrap h2 {
+  margin-top: 2rem;
+}
+
+/* Status block */
+.gfw-status-block {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.gfw-status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.gfw-status--fresh   { background: #22c55e; }
+.gfw-status--stale   { background: #f59e0b; }
+.gfw-status--missing { background: #d1d5db; }
+
+/* Cron command block */
+.gfw-cron-block {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.gfw-cron-cmd {
+  display: block;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  font-family: monospace;
+  font-size: 0.82rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+  color: #111827;
+  max-width: 600px;
+}
+
+.gfw-copy-btn {
+  flex-shrink: 0;
+}
+
+/* Show password label */
+.gfw-show-password {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-left: 0.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+/* AJAX spinner */
+.gfw-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #e5e7eb;
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  animation: gfw-spin 0.7s linear infinite;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+@keyframes gfw-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Fetch result message */
+.gfw-fetch-result {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 700px;
+}
+
+.gfw-fetch-result--success {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  color: #166534;
+}
+
+.gfw-fetch-result--error {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #991b1b;
+}
