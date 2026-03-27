@@ -7,7 +7,7 @@
 ?>
 <!-- wp:group {"className":"ukraine-banner","style":{"spacing":{"padding":{"top":"var:preset|spacing|20","bottom":"var:preset|spacing|20"}}},"backgroundColor":"base-2","fontSize":"x-small","layout":{"type":"constrained"}} -->
 <div class="wp-block-group ukraine-banner has-base-2-background-color has-background has-x-small-font-size" style="padding-top:var(--wp--preset--spacing--20);padding-bottom:var(--wp--preset--spacing--20)"><!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">Минуло [war_days_counter] відколи росія напала на нас. <a href="https://standforukraine.com/ua" data-type="link" data-id="https://standforukraine.com/ua" target="_blank" rel="noreferrer noopener">Підтримай Україну</a>!</p>
+<p class="has-text-align-center">Минуло <?php echo do_shortcode( '[war_days_counter]' ); ?> відколи росія напала на нас. <a href="https://standforukraine.com/ua" data-type="link" data-id="https://standforukraine.com/ua" target="_blank" rel="noreferrer noopener">Підтримай Україну</a>!</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 <!-- wp:group {"align":"wide","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|60"}},"border":{"bottom":{"color":"var:preset|color|contrast-5","width":"1px"},"top":[],"right":[],"left":[]}},"layout":{"type":"constrained"}} -->
