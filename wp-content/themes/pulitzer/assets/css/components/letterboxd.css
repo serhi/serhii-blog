@@ -1,0 +1,31 @@
+/* --------------------------------------------------------------------------
+   Letterboxd grid
+   -------------------------------------------------------------------------- */
+
+.letterboxd-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: 1rem;
+}
+
+.letterboxd-card {
+	text-decoration: none;
+	color: inherit;
+}
+
+.letterboxd-card img {
+	width: 100%;
+	aspect-ratio: 2/3;
+	object-fit: cover;
+	border-radius: 8px;
+}
+
+.letterboxd-card h3 {
+	font-size: 0.95rem;
+	margin: 0.5rem 0 0;
+}
+
+.letterboxd-card span {
+	font-size: 0.8rem;
+	color: var(--wp--preset--color--accent);
+}

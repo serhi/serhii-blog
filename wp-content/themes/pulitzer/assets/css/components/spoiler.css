@@ -1,0 +1,13 @@
+/* --------------------------------------------------------------------------
+   Spoiler
+   -------------------------------------------------------------------------- */
+
+.entry-content .spoiler {
+	background: var(--wp--preset--color--contrast);
+	border-radius: 2px;
+	cursor: pointer;
+}
+
+.entry-content .spoiler.spoiler--show {
+	background: var(--wp--preset--color--base-2);
+}

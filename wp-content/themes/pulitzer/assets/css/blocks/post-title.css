@@ -1,0 +1,20 @@
+/* --------------------------------------------------------------------------
+   Featured post symbol ✱
+   -------------------------------------------------------------------------- */
+
+.is-featured .wp-block-post-title a {
+	display: inline;
+}
+
+.is-featured .wp-block-post-title::before {
+	content: "\2731\0020";
+	color: var(--wp--preset--color--accent);
+	font-size: 1em;
+	font-weight: bold;
+}
+
+.featured-symbol {
+	color: var(--wp--preset--color--accent);
+	font-size: 1em;
+	font-weight: bold;
+}

@@ -1,0 +1,27 @@
+/* --------------------------------------------------------------------------
+   Tag filter – shared styles for vinyl genre filter & category filter
+   -------------------------------------------------------------------------- */
+
+.vinyl-genre-filter {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.vinyl-genre-filter__tag {
+	display: inline-block;
+	padding: 4px 12px;
+	border: 1px solid var(--wp--preset--color--contrast-5);
+	border-radius: 999px;
+	font-size: var(--wp--preset--font-size--small);
+	text-decoration: none;
+	color: inherit;
+	transition: all 0.2s ease;
+}
+
+.vinyl-genre-filter__tag.is-active,
+.vinyl-genre-filter__tag:hover {
+	background-color: var(--wp--preset--color--contrast);
+	color: var(--wp--preset--color--base);
+	border-color: var(--wp--preset--color--contrast);
+}

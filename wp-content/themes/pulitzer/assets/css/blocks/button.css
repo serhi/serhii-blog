@@ -1,0 +1,7 @@
+/* --------------------------------------------------------------------------
+   Button hover states
+   -------------------------------------------------------------------------- */
+
+.wp-block-button.is-style-outline .wp-element-button:hover {
+	background-color: var(--wp--preset--color--contrast-4);
+}

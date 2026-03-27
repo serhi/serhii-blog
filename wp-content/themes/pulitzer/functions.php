@@ -16,7 +16,7 @@
  * @return void
  */
 function pulitzer_setup() {
-	add_editor_style( array( 'style.css', 'assets/css/custom.css' ) );
+	add_editor_style( array( 'style.css' ) );
 }
 add_action( 'after_setup_theme', 'pulitzer_setup' );
 
@@ -154,6 +154,7 @@ if ( ! function_exists( 'pulitzer_block_stylesheets' ) ) :
 	function pulitzer_block_stylesheets() {
 		
 		$pulitzer_styled_blocks = array(
+			'core/button'                   => 'button',
 			'core/comments'                 => 'comments',
 			'core/footnotes'                => 'footnotes',
 			'core/list'                     => 'list',
@@ -163,9 +164,12 @@ if ( ! function_exists( 'pulitzer_block_stylesheets' ) ) :
 			'core/post-excerpt'             => 'post-excerpt',
 			'core/post-featured-image'      => 'post-featured-image',
 			'core/post-terms'               => 'post-terms',
+			'core/post-title'               => 'post-title',
 			'core/query-pagination-numbers' => 'query-pagination-numbers',
 			'core/search'                   => 'search',
 			'core/social-links'             => 'social-links',
+			'core/table'                    => 'table',
+			'core/tag-cloud'                => 'tag-cloud',
 			'jetpack/sharing-buttons'       => 'jetpack-sharing-buttons',
 			'jetpack/subscriptions'         => 'jetpack-subscriptions',
 		);
@@ -218,23 +222,6 @@ if ( ! function_exists( 'pulitzer_pattern_categories' ) ) :
 endif;
 
 add_action( 'init', 'pulitzer_pattern_categories' );
-
-
-/**
- * Check if a block is registered.
- */
-if ( ! function_exists( 'pulitzer_is_block_registered' ) ) :
-	/**
-	 * Check if a block is registered
-	 *
-	 * @since Pulitzer 1.0
-	 * @return bool
-	 */
-	function pulitzer_is_block_registered( $block_name ) {
-		$registry = WP_Block_Type_Registry::get_instance();
- 		return $registry->get_registered( $block_name );
-	}
-endif;
 
 
 /**
@@ -481,29 +468,38 @@ endif;
  * Enqueue custom stylesheets and scripts.
  */
 function pulitzer_custom_assets() {
+
+    // Components loaded globally
     wp_enqueue_style(
-        'pulitzer-custom',
-        get_theme_file_uri( 'assets/css/custom.css' ),
+        'pulitzer-filter',
+        get_theme_file_uri( 'assets/css/components/filter.css' ),
         array(),
-        filemtime( get_theme_file_path( 'assets/css/custom.css' ) )
+        filemtime( get_theme_file_path( 'assets/css/components/filter.css' ) )
     );
 
     wp_enqueue_style(
-        'pulitzer-dark',
-        get_theme_file_uri( 'assets/css/dark-mode.css' ),
-        array( 'pulitzer-custom' ),
-        filemtime( get_theme_file_path( 'assets/css/dark-mode.css' ) )
-    );
-
-    wp_enqueue_script(
         'pulitzer-spoiler',
-        get_theme_file_uri( 'assets/js/spoiler.js' ),
+        get_theme_file_uri( 'assets/css/components/spoiler.css' ),
         array(),
-        filemtime( get_theme_file_path( 'assets/js/spoiler.js' ) ),
-        true
+        filemtime( get_theme_file_path( 'assets/css/components/spoiler.css' ) )
     );
 
+    wp_enqueue_style(
+        'pulitzer-letterboxd',
+        get_theme_file_uri( 'assets/css/components/letterboxd.css' ),
+        array(),
+        filemtime( get_theme_file_path( 'assets/css/components/letterboxd.css' ) )
+    );
+
+    // Vinyl – only on the vinyl archive
     if ( is_post_type_archive( 'vinyl' ) ) {
+        wp_enqueue_style(
+            'pulitzer-vinyl',
+            get_theme_file_uri( 'assets/css/components/vinyl.css' ),
+            array(),
+            filemtime( get_theme_file_path( 'assets/css/components/vinyl.css' ) )
+        );
+
         wp_enqueue_script(
             'pulitzer-vinyl-blur',
             get_theme_file_uri( 'assets/js/vinyl-blur.js' ),
@@ -512,6 +508,23 @@ function pulitzer_custom_assets() {
             true
         );
     }
+
+    // Dark mode
+    wp_enqueue_style(
+        'pulitzer-dark',
+        get_theme_file_uri( 'assets/css/dark-mode.css' ),
+        array(),
+        filemtime( get_theme_file_path( 'assets/css/dark-mode.css' ) )
+    );
+
+    // Spoiler JS
+    wp_enqueue_script(
+        'pulitzer-spoiler',
+        get_theme_file_uri( 'assets/js/spoiler.js' ),
+        array(),
+        filemtime( get_theme_file_path( 'assets/js/spoiler.js' ) ),
+        true
+    );
 
 }
 add_action( 'wp_enqueue_scripts', 'pulitzer_custom_assets' );
@@ -565,7 +578,7 @@ if ( ! function_exists( 'pulitzer_redirect_to_external_url' ) ) :
 			return;
 		}
 		$post_id      = get_the_ID();
-		$external_url = get_field( 'external_url', $post_id );
+		$external_url = function_exists( 'get_field' ) ? get_field( 'external_url', $post_id ) : get_post_meta( $post_id, 'external_url', true );
 
 		if ( $external_url && filter_var( $external_url, FILTER_VALIDATE_URL ) ) {
 			wp_redirect( esc_url( $external_url ), 301 );
@@ -575,15 +588,17 @@ if ( ! function_exists( 'pulitzer_redirect_to_external_url' ) ) :
 	add_action( 'template_redirect', 'pulitzer_redirect_to_external_url' );
 endif;
 
-function pulitzer_add_featured_class( $classes ) {
-	$post_id = get_the_ID();
-	if ( $post_id && 'external_post' === get_post_type( $post_id ) ) {
-		if ( get_post_meta( $post_id, 'is_featured', true ) ) {
-			$classes[] = 'is-featured';
+if ( ! function_exists( 'pulitzer_add_featured_class' ) ) :
+	function pulitzer_add_featured_class( $classes ) {
+		$post_id = get_the_ID();
+		if ( $post_id && 'external_post' === get_post_type( $post_id ) ) {
+			if ( get_post_meta( $post_id, 'is_featured', true ) ) {
+				$classes[] = 'is-featured';
+			}
 		}
+		return $classes;
 	}
-	return $classes;
-}
+endif;
 add_filter( 'post_class', 'pulitzer_add_featured_class' );
 
 
@@ -591,11 +606,11 @@ add_filter( 'post_class', 'pulitzer_add_featured_class' );
    Spoiler shortcode [spoiler]...[/spoiler]
    -------------------------------------------------------------------------- */
 
-function custom_spoiler_shortcode( $atts, $content = null ) {
+function pulitzer_spoiler_shortcode( $atts, $content = null ) {
 	$content = do_shortcode( $content );
 	return '<span class="spoiler">' . esc_html( $content ) . '</span>';
 }
-add_shortcode( 'spoiler', 'custom_spoiler_shortcode' );
+add_shortcode( 'spoiler', 'pulitzer_spoiler_shortcode' );
 
 
 /* --------------------------------------------------------------------------
@@ -739,7 +754,7 @@ add_filter( 'post_link',      'pulitzer_redirect_to_discogs', 10, 2 );
    Vinyl collection counter [vinyl_count]
    -------------------------------------------------------------------------- */
 
-function pulitzer_get_cpt_count( $post_type = 'post' ) {
+function pulitzer_get_cpt_count( $post_type ) {
 	$counts = wp_count_posts( $post_type );
 	if ( $counts && is_object( $counts ) && isset( $counts->publish ) ) {
 		return (int) $counts->publish;
